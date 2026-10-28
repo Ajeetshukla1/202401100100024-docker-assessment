@@ -34,3 +34,16 @@ Result: Passed with exit code `0`. No reportable CRITICAL vulnerabilities were f
 
 - Baseline report: `reports/trivy-before.txt`
 - Hardened image report: `reports/trivy-after.txt`
+## Stage 4: Docker Hub Release
+
+**Docker Hub repository:** `ajeetshukla12/fest-backend`
+
+Published tags:
+- `ajeetshukla12/fest-backend:1.0.0`
+- `ajeetshukla12/fest-backend:1.0`
+
+**Image digest:**
+
+`sha256:564ad147134f76d05affedeba993fe78ce43b3c45225fc2789429c7c86a09d5e`
+
+Both tags were pushed successfully and point to the same image digest.
