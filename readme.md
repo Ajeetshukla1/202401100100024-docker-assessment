@@ -47,3 +47,46 @@ Published tags:
 `sha256:564ad147134f76d05affedeba993fe78ce43b3c45225fc2789429c7c86a09d5e`
 
 Both tags were pushed successfully and point to the same image digest.
+## Stage 5: Image Signing and Verification with Cosign
+
+### Signed Image: Version 1.0.0
+
+**Image:** `ajeetshukla12/fest-backend:1.0.0`
+
+**Digest:**
+
+`sha256:564ad147134f76d05affedeba993fe78ce43b3c45225fc2789429c7c86a09d5e`
+
+The image was signed using Cosign and the private key `cosign.key`.
+
+Verification was successful using `cosign.pub`. Cosign validated the image claims, verified the signature against the public key, and confirmed the transparency-log entry.
+
+### Unsigned Image: Version 1.0.1
+
+**Image:** `ajeetshukla12/fest-backend:1.0.1`
+
+**Digest:**
+
+`sha256:9dfa523860300f43f77021367c247b25c42fdadaef04a1bb12ddf7b79e0a38a5`
+
+The image was pushed to Docker Hub without signing it.
+
+The verification command:
+
+```bash
+cosign verify --key cosign.pub ajeetshukla12/fest-backend:1.0.1
+```
+
+returned:
+
+```text
+Error: no signatures found
+```
+
+This confirms that Cosign rejected the unsigned image.
+
+### Key Management
+
+- `cosign.key` is the private signing key and must remain secret.
+- `cosign.pub` is the public verification key and can be committed to the repository.
+- Private keys and passwords must never be committed to Git.
